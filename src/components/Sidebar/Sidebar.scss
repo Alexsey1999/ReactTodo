@@ -1,0 +1,48 @@
+.all-tasks-btn,
+.add-category-btn {
+  display: flex;
+  align-items: center;
+  margin: 57px auto 40px auto;
+  padding: 9px 10px;
+  width: 160px;
+  border-radius: 5px;
+
+  &.active {
+    background: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  svg {
+    margin-right: 8px;
+    path {
+      fill: #7c7c7c;
+    }
+  }
+}
+.add-category-btn {
+  color: #767676;
+  box-shadow: none;
+  margin: 37px auto 15px auto;
+  svg {
+    transform: scale(0.9);
+    margin-right: 8px;
+    path {
+      stroke: #7c7c7c;
+    }
+  }
+  &:hover {
+    color: darken(#767676, 2%);
+    svg {
+      path {
+        stroke: darken(#767676, 2%);
+      }
+    }
+  }
+  &:active {
+    color: darken(#767676, 10%);
+    svg {
+      path {
+        stroke: darken(#767676, 10%);
+      }
+    }
+  }
+}

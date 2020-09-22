@@ -1,26 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import axios from 'axios'
+
+import Sidebar from './components/Sidebar'
+import Content from './components/Content'
 
 function App() {
+  const [tasks, setTasks] = React.useState([])
+  const [currentTask, setCurrentTask] = React.useState(null)
+  const [activeTask, setActiveTask] = React.useState(null)
+
+  React.useEffect(() => {
+    axios
+      .get('http://localhost:3001/lists?_expand=color&_embed=tasks')
+      .then(({ data }) => {
+        setTasks(data)
+      })
+  }, [currentTask])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="app-wrapper">
+        <aside className="sidebar">
+          <Sidebar
+            tasks={tasks}
+            setTasks={setTasks}
+            setCurrentTask={setCurrentTask}
+            activeTask={activeTask}
+            setActiveTask={setActiveTask}
+          />
+        </aside>
+        <div className="content">
+          {activeTask == null ? (
+            tasks.map((task) => (
+              <Content
+                key={task.id}
+                currentTask={task}
+                setCurrentTask={setCurrentTask}
+                allTasks
+              />
+            ))
+          ) : (
+            <Content
+              currentTask={currentTask}
+              setCurrentTask={setCurrentTask}
+            />
+          )}
+          {/* <Content currentTask={currentTask} setCurrentTask={setCurrentTask} /> */}
+        </div>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

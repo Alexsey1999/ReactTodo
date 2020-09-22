@@ -1,0 +1,48 @@
+.categories-list {
+  margin-bottom: 27px;
+  li {
+    cursor: pointer;
+    display: flex;
+    padding: 9px 13px;
+    border-radius: 5px;
+    align-items: center;
+    max-width: 160px;
+    margin: 0px auto 5px auto;
+    &:hover {
+      svg {
+        opacity: 1;
+      }
+    }
+    &.active {
+      background: #fff;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .category-color {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #42b883;
+      margin-right: 13px;
+    }
+    .category-name {
+      flex: 1;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 160px;
+    }
+    svg {
+      transition: all 0.2s;
+      opacity: 0;
+      margin-left: auto;
+      &:hover {
+        path {
+          fill: darken(#e3e3e3, 10%);
+        }
+      }
+      path {
+        fill: #e3e3e3;
+      }
+    }
+  }
+}

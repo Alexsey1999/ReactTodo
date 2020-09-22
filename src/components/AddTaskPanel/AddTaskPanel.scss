@@ -1,0 +1,30 @@
+.add-task-panel {
+  margin: 25px 55px 0 55px;
+  input {
+    padding: 10px;
+    margin-bottom: 15px;
+    &:focus {
+      border: 1px solid #ccc;
+    }
+  }
+  .add-task-btns {
+    display: flex;
+    align-items: center;
+  }
+  .add-btn {
+    padding: 10px 20px;
+    margin-right: 10px;
+  }
+  .cancel-btn {
+    border-radius: 4px;
+    padding: 10px 20px;
+    background: #f4f6f8;
+    color: #9c9c9c;
+    &:hover {
+      background: darken(#f4f6f8, 5%);
+    }
+    &:active {
+      background: darken(#f4f6f8, 10%);
+    }
+  }
+}
