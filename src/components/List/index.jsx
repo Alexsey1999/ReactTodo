@@ -8,7 +8,7 @@ import './List.scss'
 const List = ({ tasks, activeTask, chooseActiveTask, setTasks }) => {
   const removeCategory = (listId) => {
     if (window.confirm('Вы дейсвительно хотите удалить категорию?')) {
-      axios.delete(`http://localhost:3001/lists/${listId}`).then(() => {
+      axios.delete(`/lists/${listId}`).then(() => {
         const newLists = tasks.filter((task) => task.id !== listId)
         setTasks(newLists)
         chooseActiveTask(null)

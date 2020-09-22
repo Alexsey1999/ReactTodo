@@ -19,7 +19,7 @@ const AddCategoryPanel = ({ colors, closePanel, tasks, setTasks }) => {
     }
     setIsLoading(true)
     axios
-      .post('http://localhost:3001/lists', {
+      .post('/lists', {
         colorId: activeColor,
         name: inputVal,
       })

@@ -4,7 +4,7 @@ import axios from 'axios'
 const ListItem = ({ text, id, setCurrentTask, currentTask, completed }) => {
   const removeTask = () => {
     if (window.confirm('Вы действительно хотите удалить задачу?')) {
-      axios.delete(`http://localhost:3001/tasks/${id}`).then(() => {
+      axios.delete(`/tasks/${id}`).then(() => {
         const newTasks = currentTask.tasks.filter((task) => task.id !== id)
         setCurrentTask({ ...currentTask, tasks: newTasks })
       })
@@ -16,22 +16,20 @@ const ListItem = ({ text, id, setCurrentTask, currentTask, completed }) => {
     if (!newTaskname) {
       return
     }
-    axios
-      .patch(`http://localhost:3001/tasks/${id}`, { text: newTaskname })
-      .then((resp) => {
-        const newTasks = currentTask.tasks.map((task) => {
-          if (task.id === id) {
-            task.text = newTaskname
-          }
-          return task
-        })
-        setCurrentTask({ ...currentTask, tasks: newTasks })
+    axios.patch(`/tasks/${id}`, { text: newTaskname }).then((resp) => {
+      const newTasks = currentTask.tasks.map((task) => {
+        if (task.id === id) {
+          task.text = newTaskname
+        }
+        return task
       })
+      setCurrentTask({ ...currentTask, tasks: newTasks })
+    })
   }
 
   const toggleDone = (e) => {
     axios
-      .patch(`http://localhost:3001/tasks/${id}`, {
+      .patch(`/tasks/${id}`, {
         completed: e.target.checked,
       })
       .then((resp) => {

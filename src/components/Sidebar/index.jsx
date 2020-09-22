@@ -20,7 +20,7 @@ const Sidebar = ({
   const [isActivePanel, setIsActivePanel] = React.useState(false)
 
   React.useEffect(() => {
-    axios.get('http://localhost:3001/colors').then(({ data }) => {
+    axios.get('/colors').then(({ data }) => {
       setColors(data)
     })
   }, [])

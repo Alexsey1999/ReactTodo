@@ -13,7 +13,7 @@ const AddTaskPanel = ({ setIsAddPanel, currentTask, setCurrentTask }) => {
     }
     setIsLoading(true)
     axios
-      .post('http://localhost:3001/tasks', {
+      .post('/tasks', {
         text: taskText,
         listId: currentTask.id,
         completed: false,

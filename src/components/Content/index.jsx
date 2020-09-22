@@ -20,7 +20,7 @@ const Content = ({ currentTask, setCurrentTask, allTasks }) => {
       return
     }
     axios
-      .patch(`http://localhost:3001/lists/${currentTask.id}`, {
+      .patch(`/lists/${currentTask.id}`, {
         name: newName,
       })
       .then(() => {
