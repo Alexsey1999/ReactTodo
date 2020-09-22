@@ -10,11 +10,9 @@ function App() {
   const [activeTask, setActiveTask] = React.useState(null)
 
   React.useEffect(() => {
-    axios
-      .get('http://localhost:3001/lists?_expand=color&_embed=tasks')
-      .then(({ data }) => {
-        setTasks(data)
-      })
+    axios.get('/lists?_expand=color&_embed=tasks').then(({ data }) => {
+      setTasks(data)
+    })
   }, [currentTask])
 
   return (
